@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div id="message_container" class="message_container">
+            <div class="lbl-attachment"> Compose:</div>
+            <div class="input_container">
+                <!-- <input type="text" name="" id="textarea"> -->
+                <textarea name="textarea" id="textarea" placeholder="Type message ..."></textarea>
+            </div>
+            <div class="button_container">
+                <div class="btn" id="read">
+                    <div class="icon" id="read_icon"></div>
+                    <div>Read Aloud</div>
+                </div>
+                <div class="btn" id="save">
+                    <div class="icon" id="save_icon"></div>
+                    <div>Save Draft</div>
+                </div>
+                <div class="btn" id="clear">
+                    <div class="icon" id="clear_icon"></div>
+                    <div>Clear</div>
+                </div>
+                <div class="btn" id="send">
+                    <div class="icon" id="send_icon"></div>
+                    <div>Send to Group</div>
+                </div>
+            </div>
+
+            <div class="attachments">
+                <div class="lbl-attachment">Attachment:</div>
+                <div class="btn upload">
+                    <div class="icon" id="upload_icon"></div>
+                    <input type="file" id="hiddenFileInput">
+                    <div id="uploadButton">Upload file</div>                                        
+                </div>
+            </div>         
+        </div>
+
+        <div id="template_message_container" class="template_message_container">
+            <div class="lbl-attachment"> Intent/Status Indicators:</div>
+            <div class="button_container">
+                <div class="btn" id="agree">
+                    <div class="icon" id="agree_icon"></div>
+                    <div>Agree</div>
+                </div>
+                <div class="btn" id="disagree">
+                    <div class="icon" id="disagree_icon"></div>
+                    <div>Disagree</div>
+                </div>
+                <div class="btn" id="unsure">
+                    <div class="icon" id="unsure_icon"></div>
+                    <div>Unsure</div>
+                </div>
+                <div class="btn" id="help">
+                    <div class="icon" id="help_icon"></div>
+                    <div>Help</div>
+                </div>
+                <div class="btn" id="wait">
+                    <div class="icon" id="wait_icon"></div>
+                    <div>Wait</div>
+                </div>
+                <div class="btn" id="repeat">
+                    <div class="icon" id="repeat_icon"></div>
+                    <div>Repeat</div>
+                </div>
+                <div class="btn" id="yes">
+                    <div class="icon" id="yes_icon"></div>
+                    <div>Yes</div>
+                </div>
+                <div class="btn" id="no">
+                    <div class="icon" id="no_icon"></div>
+                    <div>No</div>
+                </div>
+                <div class="btn" id="question">
+                    <div class="icon" id="question_icon"></div>
+                    <div>I have a question</div>
+                </div>                
+                <div class="btn" id="respond">
+                    <div class="icon" id="respond_icon"></div>
+                    <div>Respond to ...</div>
+                </div>
+                <div class="btn" id="change_topic">
+                    <div class="icon" id="change_topic_icon"></div>
+                    <div>Change topic</div>
+                </div>                
+
+            </div> 
+        </div> 
+
+        <div class="menu">
+            <div id="text-menu-item" class="btn menu-item text-menu">
+                <div class="icon" id="text_icon"></div>
+                <div id="text-text">Share</div>                 
+            </div>
+            <div id="quick-text-menu-item" class="btn menu-item quick-text">
+                <div class="icon" id="quick_text_icon"></div>
+                <div id="quick-text-text">Signal</div>                
+            </div>
+        </div>        
+    </div>
+
+
+    <script src="js/variables.js"></script>       
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.1.2.min.js"></script>  
+    <script src="js/messages.js"></script>
+
+    <!-- <a href="https://www.flaticon.com/free-icons/book" title="book icons">Book icons created by Freepik - Flaticon</a> -->
+    <!-- <a href="https://www.flaticon.com/free-icons/save" title="save icons">Save icons created by Yogi Aprelliyanto - Flaticon</a>      -->
+    <!-- <a href="https://www.flaticon.com/free-icons/clear" title="clear icons">Clear icons created by The Icon Tree - Flaticon</a>      -->
+     <!-- <a href="https://www.flaticon.com/free-icons/upload" title="upload icons">Upload icons created by Gregor Cresnar - Flaticon</a> -->
+    <!-- <a href="https://www.flaticon.com/free-icons/message" title="message icons">Message icons created by mattbadal - Flaticon</a>       -->
+    <!-- <a href="https://www.flaticon.com/free-icons/layout" title="layout icons">Layout icons created by edt.im - Flaticon</a>      -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="user_and_session_container">
+        <div class="participants">
+            <div class="participant_title"> Participants</div>
+            <div id="all_participants_container" class="all_participants_container">
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="session_name">
+                Session Name : July 2026
+            </div>
+            <div class="content">
+                <div class="user_message_container" id="user_message_container">
+                    <div id="user_message_title">
+                        <!-- <div id="user_title">username</div> -->
+                        <div id="message_title">Messages</div>
+                    </div>  
+                    
+                    <div id="user_message">
+
+                    </div>             
+                </div>
+
+                <div id="large_message_container">
+                    <div id="large_message"></div>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.1.2.min.js"></script>
+    <script src="js/session.js"></script>
+</body>
+</html>
