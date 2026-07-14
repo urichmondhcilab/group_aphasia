@@ -1,1 +1,0 @@
-const newMeeting = document.getElementById();

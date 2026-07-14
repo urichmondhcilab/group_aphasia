@@ -21,6 +21,8 @@ function login(e){
         window.location.href = `message.html?user=${encodeURIComponent(username)}`;
         // `page2.html?user=${encodeURIComponent(username)}`
         
+    }else if(slpOption.checked){
+        window.location.href = `facilitator.html?user=${encodeURIComponent(username)}`;
     }
 
 }
