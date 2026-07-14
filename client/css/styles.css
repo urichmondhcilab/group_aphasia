@@ -1,16 +1,10 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#join_container{
-    background-color: #8b9dc3;
-    color: white;
-    padding: 1rem 3rem 1rem 3rem;
-    border-radius: 0.5rem;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-}
 
+/** client.html objects
+*
+*/
 
 .container{
     display: flex;
@@ -31,19 +25,35 @@ body{
     background-color: white;
 }
 
-#template_message_container{
+#title{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.login_information{
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    gap: 1rem;
 }
 
 #username{
     padding: 1rem;
 }
 
-#title{
-    font-size: 2rem;
-    text-align: center;
+#join_container{
+    background-color: #8b9dc3;
+    color: white;
+    padding: 1rem 3rem 1rem 3rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+#template_message_container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
 }
 
 .role_options{
@@ -52,13 +62,6 @@ body{
     gap: 1rem;
     /* background-color: blue; */
     /* width: 100%; */
-}
-
-.login_information{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
 }
 
 .a_role{
