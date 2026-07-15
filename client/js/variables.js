@@ -1,1 +1,0 @@
-// let username = "user"; // the username of the participant
