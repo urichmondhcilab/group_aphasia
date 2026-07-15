@@ -17,7 +17,6 @@ let largeMessageContainer = document.getElementById('large_message_container');
 let largeMessage = document.getElementById('large_message');
 let allParticipantContainer = document.getElementById('all_participants_container');
 
-
 // keep a set of usernames
 let user = new Set();
 const colors = ['red', 'purple', 'blue', 'green', 'orange'];
@@ -63,6 +62,7 @@ pubnub.addListener({
             // update meeting_channel name;
             let meetingChannel = "channel" + m.message.text;
 
+            // add meeting channel to the channel array
             channel.push(meetingChannel);
             console.log(channel);            
             pubnub.subscribe({
@@ -110,6 +110,10 @@ pubnub.addListener({
                 let imageUrl = "../client/images/" + status + ".png";
                 console.log(imageUrl);
 
+                if (status == undefined){
+                    status = "";
+                }
+
                 let statusText = document.createTextNode(status);
 
                 let participantContainer = document.createElement('div');
@@ -154,7 +158,7 @@ pubnub.addListener({
 
             // loading message column
             // check if text message only
-            if(status === undefined){
+            if(status === undefined || status == ""){
                 // load text message
                 largeMessage.textContent = m.message.text;
                 userMessageContainer.prepend(userDivImgContainer); 

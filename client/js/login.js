@@ -17,15 +17,17 @@ let init_values = {
 
 // creating a PubNub object
 const pubnub = new PubNub(init_values);
-
-loginBtn.addEventListener('click', login);
-
-window.addEventListener('load', retrieveUsername);
-
-userNameInput.addEventListener('input', saveUserName);
-
 const default_channel = "default_channel";
 
+
+// event listeners
+loginBtn.addEventListener('click', login);
+window.addEventListener('load', retrieveUsername);
+userNameInput.addEventListener('input', saveUserName);
+slpOption.addEventListener('change', changeButtonText);
+
+
+// subscribe to the default channel
 pubnub.subscribe({ // Subscribe to wait for messages
     channels: [default_channel],
     withPresence: true
@@ -92,4 +94,12 @@ function retrieveUsername(e){
  */
 function saveUserName(e){
     localStorage.setItem("savedUserName", e.target.value);
+}
+
+/**
+ * Change the text on the button based on 
+ * @param {EventObject} e 
+ */
+function changeButtonText(e){
+    // come back
 }

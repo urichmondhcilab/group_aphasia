@@ -1,10 +1,25 @@
 html{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-#new_meeting{
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.btn{
     background-color: #8b9dc3;
     width: 20%;
     color: white;
     padding: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.5rem;   
+    text-align: center; 
+}
+
+@media (max-width: 780px) {
+    .btn{width: 90%;}
 }

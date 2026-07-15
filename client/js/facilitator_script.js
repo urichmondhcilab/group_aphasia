@@ -1,5 +1,6 @@
 // constants
 const newMeeting = document.getElementById("new_meeting");
+const meetingInformation = document.getElementById('meeting_information');
 // retrieve information from login.js and client.html
 const params = new URLSearchParams(window.location.search);
 const username = params.get('user'); // get the user parameter.
@@ -20,7 +21,6 @@ let init_values = {
 // creating a PubNub object
 const pubnub = new PubNub(init_values);
 
-
 // send the channel to participants on the default channel
 function broadcastChannel(channelID){
   pubnub.publish({
@@ -33,7 +33,6 @@ function broadcastChannel(channelID){
   });
 }
 
-
 // create a new channel with the date;
 function createChannel(e){
     // get current date 
@@ -43,6 +42,12 @@ function createChannel(e){
     channelCount++;
     console.log("broadcast channel " + channelID);
 
+    // update information on Facilitator mage
+    updateMeetingInformation(channelID);
     //braodcast the new channel to participants
     broadcastChannel(channelID);
+}
+
+function updateMeetingInformation(channelID){
+  meetingInformation.textContent = "New Meeting Created!: " + channelID;
 }
