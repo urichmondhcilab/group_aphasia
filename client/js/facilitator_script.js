@@ -1,5 +1,8 @@
 // constants
 const newMeeting = document.getElementById("new_meeting");
+// retrieve information from login.js and client.html
+const params = new URLSearchParams(window.location.search);
+const username = params.get('user'); // get the user parameter.
 
 // variables 
 let channelCount = 0;
@@ -11,7 +14,7 @@ newMeeting.addEventListener('click', createChannel);
 let init_values = {
   publishKey: "pub-c-931a8a05-bc0b-426f-9d3f-8bee93b34d1f",
   subscribeKey: "sub-c-e5c423cc-279e-4547-9d1c-321fa2bfd68d",
-  uuid: "testName",
+  uuid: username,
 };
 
 // creating a PubNub object
@@ -19,8 +22,15 @@ const pubnub = new PubNub(init_values);
 
 
 // send the channel to participants on the default channel
-function broadcastChannel(){
-
+function broadcastChannel(channelID){
+  pubnub.publish({
+    channel: "default_channel",
+    message: {"text": channelID, "type": "id"},
+  },
+  function(status, response){
+      console.log(status);
+      console.log(response);
+  });
 }
 
 
@@ -31,9 +41,6 @@ function createChannel(e){
     now = now.toLocaleDateString().replaceAll('/', '_');
     let channelID = now + "_" + channelCount;
     channelCount++;
-
-
-
     console.log("broadcast channel " + channelID);
 
     //braodcast the new channel to participants

@@ -6,7 +6,8 @@ const pubnub = new PubNub({
 
 // create a subscription to a single channel
 // const channel = pubnub.channel('my_channel')
-const channel = 'my_channel';
+const channel = ['default_channel'];
+let meeting_channel = null;
 
 
 // const subscription1 = channel.subscription({ receivePresenceEvents: true });
@@ -23,7 +24,7 @@ const colors = ['red', 'purple', 'blue', 'green', 'orange'];
 let color_count = 0;
 
 pubnub.subscribe({ // Subscribe to wait for messages
-    channels: [channel],
+    channels: channel,
     withPresence: true
 });
 
@@ -43,131 +44,128 @@ window.addEventListener('DOMContentLoaded', () => {
 // add a subscription connection status listener
 pubnub.addListener({
     status: (s) => {console.log('Status', s.category) },
-    message: (m) => {console.log(m)
+    message: (m) => {
+        console.log(m)
         console.log(m.message.text);
         console.log(m.publisher);
+
+        // update meeting channel;
+        console.log( "message id: " + m.message.type );
+        console.log("channel name: " + m.channel);
 
         let username = m.publisher;
         let status = m.message.status;
 
-        console.log("status:", status);
 
-        // await attachMessageToThread(m);
+        console.log("status:", status);        
 
-        let messageText = document.createTextNode(m.message.text);
-        let largeMessageText = document.createTextNode(m.message.text);
-        let userText = document.createTextNode(m.publisher);
+        if (m.channel == "default_channel"){
+            // update meeting_channel name;
+            let meetingChannel = "channel" + m.message.text;
 
-        let messageDiv = document.createElement('div');
-        let userDivImgContainer = document.createElement('div');
-        let userDiv = document.createElement('div');
-        let userImage = document.createElement('img');
-
-        let messages = document.querySelectorAll('.user_div_img_container');
-
-        // 
-        messages.forEach(message => {
-            message.style.backgroundColor = 'white';
-            message.style.color = 'black';            
-        });        
-
-        messageDiv.appendChild(messageText);
-        userDiv.appendChild(userText);
-        userDivImgContainer.appendChild(userImage);
-        userDivImgContainer.appendChild(userDiv);
-        userDivImgContainer.appendChild(messageDiv);    
-        
-        messageDiv.className = 'message';
-        userDiv.className = 'user';
-        userImage.className = 'user_img icon';
-        userDivImgContainer.className = 'user_div_img_container';  
-        // userDivImgContainer.style.backgroundColor = '#731C13';  
-        userDivImgContainer.style.backgroundColor = '#EBF3F8';  
-        userDivImgContainer.style.color = 'black'; 
-        
-        
-        // message column
-        // if status message 
-        //     update status
-        // if normal message 
-        //     add message  
-
-        
-        // participant column
-        // check user 
-        // if user does not exist
-        //     create user 
-        //     if status is undefined leave empty
-        //         else include status
-
-
-
-      
-
-
-
-        
- 
-
-        // loading participant column
-        if(!user.has(username)){
-            // create entry for participant column
-            let imageUrl = "../client/images/" + status + ".png";
-            console.log(imageUrl);
-
-            let statusText = document.createTextNode(status);
-
-            let participantContainer = document.createElement('div');
-            // let participantNameStatusContainer = docu
-            let statusDiv = document.createElement('div');
-            let statusCircle = document.createElement('div');
-            let statusIcon = document.createElement('div');
-
-            let participantUserName = userDiv.cloneNode(true);
-
-            statusCircle.style.backgroundColor = colors[(color_count++) % colors.length];
-            statusCircle.className = 'status_circle';
-            statusIcon.className = 'icon';
-            statusDiv.className = 'status_text'; // for identification in subsequent calls
-            statusIcon.style.backgroundImage = `url('${imageUrl}')`;
-
-            statusDiv.appendChild(statusText);
-            participantContainer.appendChild(statusCircle);
-
-            participantContainer.appendChild(participantUserName);
-            participantContainer.appendChild(statusIcon);
-            participantContainer.appendChild(statusDiv);
-
-            participantContainer.className = 'participant';
-            participantContainer.id = username;
-            allParticipantContainer.appendChild(participantContainer);  
-            user.add(username);
+            channel.push(meetingChannel);
+            console.log(channel);            
+            pubnub.subscribe({
+                channels: channel,
+                withPresence: true 
+            });            
         }else{
-            console.log("has username");
-            // let currentParticipantObject = document.getElementById(username);
-            // let statusIcon = currentParticipantObject.querySelector('.icon');
-            // let statusDiv = currentParticipantObject.querySelector('.status_text');
+            // upload message to broadcast screen
 
-            // let imageUrl = "../client/images/" + status + ".png";
-            // statusIcon.style.backgroundImage = `url('${imageUrl}')`;
-            // statusDiv.textContent = status;
-            if(status != undefined)
-                updateStatus(username, status);
+            let messageText = document.createTextNode(m.message.text);
+            let largeMessageText = document.createTextNode(m.message.text);
+            let userText = document.createTextNode(m.publisher);
+
+            let messageDiv = document.createElement('div');
+            let userDivImgContainer = document.createElement('div');
+            let userDiv = document.createElement('div');
+            let userImage = document.createElement('img');
+
+            let messages = document.querySelectorAll('.user_div_img_container');
+
+            // 
+            messages.forEach(message => {
+                message.style.backgroundColor = 'white';
+                message.style.color = 'black';            
+            });        
+
+            messageDiv.appendChild(messageText);
+            userDiv.appendChild(userText);
+            userDivImgContainer.appendChild(userImage);
+            userDivImgContainer.appendChild(userDiv);
+            userDivImgContainer.appendChild(messageDiv);    
             
+            messageDiv.className = 'message';
+            userDiv.className = 'user';
+            userImage.className = 'user_img icon';
+            userDivImgContainer.className = 'user_div_img_container';  
+            // userDivImgContainer.style.backgroundColor = '#731C13';  
+            userDivImgContainer.style.backgroundColor = '#EBF3F8';  
+            userDivImgContainer.style.color = 'black'; 
+
+
+            // loading participant column
+            if(!user.has(username)){
+                // create entry for participant column
+                let imageUrl = "../client/images/" + status + ".png";
+                console.log(imageUrl);
+
+                let statusText = document.createTextNode(status);
+
+                let participantContainer = document.createElement('div');
+                // let participantNameStatusContainer = docu
+                let statusDiv = document.createElement('div');
+                let statusCircle = document.createElement('div');
+                let statusIcon = document.createElement('div');
+
+                let participantUserName = userDiv.cloneNode(true);
+
+                statusCircle.style.backgroundColor = colors[(color_count++) % colors.length];
+                statusCircle.className = 'status_circle';
+                statusIcon.className = 'icon';
+                statusDiv.className = 'status_text'; // for identification in subsequent calls
+                statusIcon.style.backgroundImage = `url('${imageUrl}')`;
+
+                statusDiv.appendChild(statusText);
+                participantContainer.appendChild(statusCircle);
+
+                participantContainer.appendChild(participantUserName);
+                participantContainer.appendChild(statusIcon);
+                participantContainer.appendChild(statusDiv);
+
+                participantContainer.className = 'participant';
+                participantContainer.id = username;
+                allParticipantContainer.appendChild(participantContainer);  
+                user.add(username);
+            }else{
+                console.log("has username");
+                // let currentParticipantObject = document.getElementById(username);
+                // let statusIcon = currentParticipantObject.querySelector('.icon');
+                // let statusDiv = currentParticipantObject.querySelector('.status_text');
+
+                // let imageUrl = "../client/images/" + status + ".png";
+                // statusIcon.style.backgroundImage = `url('${imageUrl}')`;
+                // statusDiv.textContent = status;
+                if(status != undefined)
+                    updateStatus(username, status);
+                
+            }
+
+
+            // loading message column
+            // check if text message only
+            if(status === undefined){
+                // load text message
+                largeMessage.textContent = m.message.text;
+                userMessageContainer.prepend(userDivImgContainer); 
+
+            }else{
+                console.log("whats happening");
+                updateStatus(username, status);
+            }               
         }
 
-
-        // loading message column
-        // check if text message only
-        if(status === undefined){
-            // load text message
-            largeMessage.textContent = m.message.text;
-            userMessageContainer.prepend(userDivImgContainer); 
-
-        }else{
-            console.log("whats happening");
-            updateStatus(username, status);
-        }        
+     
 
     },
     file: async (fileEvent) => {

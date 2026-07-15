@@ -1,6 +1,9 @@
 // retrieve information from login.js and client.html
 const params = new URLSearchParams(window.location.search);
 const username = params.get('user'); // get the user parameter.
+const channel = "channel" + params.get('channel'); // get the channel parameter.
+
+console.log("the channel to join is: " + channel);
 
 const fileInput = document.getElementById('hiddenFileInput');
 const uploadButton = document.getElementById('uploadButton');
@@ -111,7 +114,7 @@ function sendMessage(e, status){
     console.log(message);
     pubnub.publish(
     {
-        channel: "my_channel",
+        channel: channel,
         message: {"text": message, "status": status},
         customMessageType: "text-message"
     },
