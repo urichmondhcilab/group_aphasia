@@ -25,6 +25,9 @@ let user = new Set();
 const colors = ['red', 'purple', 'blue', 'green', 'orange'];
 let color_count = 0;
 
+// received message audio
+const receivedMessageSound = new Audio('./audio/received_message.mp3');
+
 pubnub.subscribe({ // Subscribe to wait for messages
     channels: channel,
     withPresence: true
@@ -146,13 +149,7 @@ pubnub.addListener({
                 user.add(username);
             }else{
                 console.log("has username");
-                // let currentParticipantObject = document.getElementById(username);
-                // let statusIcon = currentParticipantObject.querySelector('.icon');
-                // let statusDiv = currentParticipantObject.querySelector('.status_text');
 
-                // let imageUrl = "../client/images/" + status + ".png";
-                // statusIcon.style.backgroundImage = `url('${imageUrl}')`;
-                // statusDiv.textContent = status;
                 if(status != undefined)
                     updateStatus(username, status);
                 
@@ -169,11 +166,10 @@ pubnub.addListener({
             }else{
                 console.log("whats happening");
                 updateStatus(username, status);
-            }               
+            }    
+            
+            receivedMessageSound.play();            
         }
-
-     
-
     },
     file: async (fileEvent) => {
             // fileEvent contains file ID, filename, publisher, and caption
@@ -229,8 +225,7 @@ pubnub.addListener({
             userDivImgContainer.className = 'user_div_img_container'; 
             container.className = 'message_with_image';
             
-            userDivImgContainer.style.backgroundColor = '#EBF3F8';  
-            // userDivImgContainer.style.color = 'white';     
+            userDivImgContainer.style.backgroundColor = '#EBF3F8';    
 
             imgElement.src = fileUrl;
             imgElement.className = 'image_messages';
@@ -245,9 +240,6 @@ pubnub.addListener({
             imageClone.className = 'large_image_with_message';
             largeMessage.appendChild(largeMessageText);
             largeMessage.appendChild(imageClone);
-
-            // largeMessage.className = 'message_with_image';
-            // largeMessage.textContent = message.text;
 
             userMessageContainer.prepend(container);             
 
@@ -264,60 +256,3 @@ function updateStatus(username, status){
             statusIcon.style.backgroundImage = `url('${imageUrl}')`;
             statusDiv.textContent = status;    
 }
-
-// function attachImageToThread(fileUrl){
-//     const imgElement = document.createElement('img');
-//     const userDivImgContainer = document.createElement('div');
-//     userDivImgContainer.className = 'user_div_img_container';  
-//     imgElement.src = fileUrl;
-//     imgElement.className = 'image_messages';
-//     userDivImgContainer.appendChild(imgElement);
-//     userMessageContainer.prepend(userDivImgContainer);
-// }
-
-
-// async function attachMessageToThread(message){
-//     let messageText = document.createTextNode(m.message.text);
-//     let largeMessageText = document.createTextNode(m.message.text);
-//     let userText = document.createTextNode(m.publisher);
-
-//     let messageDiv = document.createElement('div');
-//     let userDivImgContainer = document.createElement('div');
-//     let userDiv = document.createElement('div');
-//     let userImage = document.createElement('img');
-
-//     let messages = document.querySelectorAll('.user_div_img_container');
-
-//     // 
-//     messages.forEach(message => {
-//         message.style.backgroundColor = 'white';
-//         message.style.color = 'black';            
-//     });
-
-
-//     messageDiv.appendChild(messageText);
-//     userDiv.appendChild(userText);
-//     userDivImgContainer.appendChild(userImage);
-//     userDivImgContainer.appendChild(userDiv);
-//     userDivImgContainer.appendChild(messageDiv);        
-
-//     messageDiv.className = 'message';
-//     userDiv.className = 'user';
-//     userImage.className = 'user_img icon';
-//     userDivImgContainer.className = 'user_div_img_container';  
-//     // userDivImgContainer.style.backgroundColor = '#731C13';  
-//     userDivImgContainer.style.backgroundColor = 'salmon';  
-//     userDivImgContainer.style.color = 'white';
-
-//     largeMessage.textContent = m.message.text;
-
-//     userMessageContainer.prepend(userDivImgContainer);
-// }
-
-// // add message and presence listeners
-// subscription.addListener({
-//     // Messages
-//     message: (m) => { console.log('Received message', m) },
-//     // Presence
-//     presence: (p) => { console.log('Presence event', p) },
-// });

@@ -4,9 +4,7 @@ let slpOption = document.getElementById("slp");
 let participantOption = document.getElementById("participant");
 let username = userNameInput.value;
 let titleObj = document.getElementById("title");
-
 let meeting_channel = null;
-
 
 // initializing the publish and subscribe keys for PubNub
 let init_pubnub = {};
@@ -48,7 +46,6 @@ pubnub.addListener({
         }
     }
 });
-
 
 /**
  * Update the meeting channel name when the channel is retrieved from facilitator
