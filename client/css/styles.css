@@ -50,6 +50,12 @@ body{
     gap: 1rem;
 }
 
+#back{
+    width: 100%;
+    background-color: #8b9dc3;
+    color: white;
+}
+
 #template_message_container{
     display: flex;
     flex-direction: column;
@@ -68,6 +74,14 @@ body{
     display: flex;
     /* background-color: red; */
     /* width: 80%; */
+}
+
+#refresh_icon{
+    background-image: url('../images/refresh.png');
+}
+
+#back_icon{
+    background-image: url('../images/back.png');
 }
 
 #participant_icon{
@@ -110,7 +124,6 @@ body{
     background-image: url('../images/updates.png')
 }
 
-
 #respond_icon{
     background-image: url('../images/respond.png');
 }
@@ -138,7 +151,6 @@ body{
 #repeat_icon{
     background-image: url('../images/repeat.png');
 }
-
 
 #help_icon{
     background-image: url('../images/help.png');
@@ -171,6 +183,17 @@ body{
     padding: 0 1rem 0 0;
 }
 
+#refresh_container{
+    display: flex;
+    background-color:#8b9dc3;
+    color: white;
+    /* align-self: flex-end; */
+    padding: 1rem;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 0.5rem;
+}
+
 .message_container{
     box-sizing: border-box;
     display: flex;
@@ -180,13 +203,12 @@ body{
     /* background-color: #183040; */
     color: white;
     height: 85vh;
-    padding: 3rem 2rem 0rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
     /* margin: 10rem; */
     /* padding-top: 3rem; */
     width: 100%;
     border-radius: 0.5rem;
     position: relative;
-
 }
 
 .input_container{
@@ -289,6 +311,14 @@ body{
 
 #hiddenFileInput{
     display: none;
+}
+
+.debug{
+    background-color: #8b9dc3;
+    width: 20%;
+    padding: 1%;
+    color: white;
+    border-radius: 0.5rem;
 }
 
 /* @media (min-width : 992px) {

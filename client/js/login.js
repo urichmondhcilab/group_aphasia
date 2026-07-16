@@ -4,6 +4,9 @@ let slpOption = document.getElementById("slp");
 let participantOption = document.getElementById("participant");
 let username = userNameInput.value;
 let titleObj = document.getElementById("title");
+let refreshObj = document.getElementById("refresh");
+let nextBtn = document.getElementById("debug_next");
+
 let meeting_channel = null;
 
 // initializing the publish and subscribe keys for PubNub
@@ -21,6 +24,8 @@ loginBtn.addEventListener('click', login);
 window.addEventListener('load', retrieveUsername);
 userNameInput.addEventListener('input', saveUserName);
 slpOption.addEventListener('change', changeButtonText);
+refreshObj.addEventListener('click', reloadPage);
+nextBtn.addEventListener('click', next);
 
 
 // subscribe to the default channel
@@ -97,4 +102,16 @@ function saveUserName(e){
  */
 function changeButtonText(e){
     // come back
+}
+
+/**
+ * reload the page
+ */
+function reloadPage(e){
+    window.location.reload();
+}
+
+
+function next(){
+    window.location.href = 'message.html';
 }

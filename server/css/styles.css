@@ -2,6 +2,7 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+
 #user_message_container, .user_message_container{
     box-sizing: border-box;
     width: 30%;

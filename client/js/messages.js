@@ -35,6 +35,11 @@ const noBtn = document.getElementById('no');
 const questionBtn = document.getElementById('question');
 const respondBtn = document.getElementById('respond');
 const changeTopicBtn = document.getElementById('change_topic');
+const backBtn = document.getElementById('back');
+const readBtn = document.getElementById('read');
+
+// sound
+const synth = window.speechSynthesis;
 
 
 // initializing the publish and subscribe keys for PubNub
@@ -46,6 +51,11 @@ init_pubnub.uuid = username;
 // creating a PubNub object
 const pubnub = new PubNub(init_pubnub);
 
+// event listner to go back
+backBtn.addEventListener('click', goBack);
+
+// event listener to read a message
+readBtn.addEventListener('click', readMessage);
 
 // event listeners for objects 
 textBtn.addEventListener('click', switchInterface);
@@ -146,6 +156,22 @@ async function uploadImage() {
 
 function clearMessage(e){
     textAreaObj.value="";
+}
+
+function goBack(e){
+    window.location.href = 'client.html';
+}
+
+function readMessage(e){
+    if (synth.speaking) {
+        console.error('speechSynthesis is already speaking.');
+        return;
+    }   
+    
+    const utterThis = new SpeechSynthesisUtterance(textAreaObj.value);
+
+    if (textAreaObj.value !='')
+        synth.speak(utterThis);
 }
 
 
