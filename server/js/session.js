@@ -1,10 +1,4 @@
 // initialize pubnub
-// const pubnub = new PubNub({
-//   publishKey: "pub-c-931a8a05-bc0b-426f-9d3f-8bee93b34d1f",
-//   subscribeKey: "sub-c-e5c423cc-279e-4547-9d1c-321fa2bfd68d",
-//   uuid: "main_computer" // Must be a string (max 92 characters)
-// });
-
 let init_pubnub = {};
 init_pubnub.publishKey = init_values.publishKey;
 init_pubnub.subscribeKey = init_values.subscribeKey;
@@ -15,7 +9,6 @@ init_pubnub.uuid = "main_computer";
 const pubnub = new PubNub(init_pubnub);
 
 // create a subscription to a single channel
-// const channel = pubnub.channel('my_channel')
 const channel = ['default_channel'];
 let meeting_channel = null;
 
