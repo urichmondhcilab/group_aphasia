@@ -35,8 +35,8 @@ const repeatBtn = document.getElementById('repeat');
 const yesBtn =document.getElementById('yes')
 const noBtn = document.getElementById('no');
 const questionBtn = document.getElementById('question');
-const respondBtn = document.getElementById('respond');
-const changeTopicBtn = document.getElementById('change_topic');
+// const respondBtn = document.getElementById('respond');
+// const changeTopicBtn = document.getElementById('change_topic');
 const backBtn = document.getElementById('back');
 const readBtn = document.getElementById('read');
 
@@ -81,8 +81,8 @@ repeatBtn.addEventListener('click', (e)=>{sendMessage(e, 'repeat')});
 yesBtn.addEventListener('click', (e)=>{sendMessage(e, 'yes')});
 noBtn.addEventListener('click', (e)=>{sendMessage(e, 'no')});
 questionBtn.addEventListener('click', (e)=>{sendMessage(e, 'question')});
-respondBtn.addEventListener('click', (e)=>{sendMessage(e, 'respond')});
-changeTopicBtn.addEventListener('click', (e)=>{sendMessage(e, 'change')});
+// respondBtn.addEventListener('click', (e)=>{sendMessage(e, 'respond')});
+// changeTopicBtn.addEventListener('click', (e)=>{sendMessage(e, 'change')});
 
 
 //switch Interface

@@ -2,8 +2,12 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.user_and_session_container{
+    height: 95vh;
+}
 
-#user_message_container, .user_message_container{
+
+#user_message_container, .user_message_container, .user_and_session_container_large{
     box-sizing: border-box;
     width: 30%;
     padding-right: 1rem;
@@ -114,13 +118,13 @@ body{
     object-fit: contain;
 }
 
-.container{
+.container, .container_large{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;    
+    height: 95vh;    
     width: 85%;
 }
 
@@ -139,7 +143,7 @@ body{
     /* background-color: blue; */
 }
 
-.participants{
+.participants, .participants_large{
     width: 15%;
     /* background-color: red; */
     padding: 1rem;
@@ -190,6 +194,64 @@ body{
 
 .status_text{
     background-color: red;
+}
+
+
+.menu{
+    display: none;
+}
+
+@media (max-width: 780px) {
+    .container{
+        display: none;
+    }
+
+    .menu{
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+        flex-grow: 1;
+
+    }   
+    
+    .menu-item{
+        background-color: #8b9dc3;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+        font-size: 0.8rem;   
+        flex-basis: 29%;     
+    }
+
+    .participants{
+        /* width: 100%; */
+        display: none;
+    }
+
+    .container{
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 781px){
+   .participant{
+        display: block;
+   }     
+
+   .container{
+        display: block;
+   }
+
+   .user_message_container{
+    display: block;
+    width: 30%;    
+   }
+
+   #large_message_container{
+        display: flex;
+        width: 70%;
+   }
 }
 
 

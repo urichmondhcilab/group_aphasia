@@ -4,7 +4,6 @@ init_pubnub.publishKey = init_values.publishKey;
 init_pubnub.subscribeKey = init_values.subscribeKey;
 init_pubnub.uuid = "main_computer";
 
-
 // creating a PubNub object
 const pubnub = new PubNub(init_pubnub);
 
@@ -15,11 +14,16 @@ let meeting_channel = null;
 
 // const subscription1 = channel.subscription({ receivePresenceEvents: true });
 
-let userMessageContainer = document.getElementById('user_message');
+let userMessage = document.getElementById('user_message');
 let largeMessageContainer = document.getElementById('large_message_container');
 let largeMessage = document.getElementById('large_message');
 let allParticipantContainer = document.getElementById('all_participants_container');
 
+const mediaQuery = window.matchMedia('(min-width: 781px)');
+
+let menuItemParticipantObj = document.getElementById('menu-item-participant');
+let menuItemMessageObj = document.getElementById('menu-item-messages');
+let menuItemCurrentMessageObj = document.getElementById('menu-item-current-message');
 // keep a set of usernames
 let user = new Set();
 const colors = ['red', 'purple', 'blue', 'green', 'orange'];
@@ -45,6 +49,11 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+menuItemParticipantObj.addEventListener('click', showParticipantDiv);
+menuItemMessageObj.addEventListener('click', showMessageDiv);
+menuItemCurrentMessageObj.addEventListener('click', showCurrentMessageDiv);
+
+mediaQuery.addEventListener('change', returnLargeScreenStyles);
 
 // add a subscription connection status listener
 pubnub.addListener({
@@ -161,7 +170,7 @@ pubnub.addListener({
             if(status === undefined || status == ""){
                 // load text message
                 largeMessage.textContent = m.message.text;
-                userMessageContainer.prepend(userDivImgContainer); 
+                userMessage.prepend(userDivImgContainer); 
 
             }else{
                 console.log("whats happening");
@@ -233,7 +242,7 @@ pubnub.addListener({
             container.appendChild(imgElement);
             container.appendChild(userDivImgContainer);
 
-            userMessageContainer.prepend(container);   
+            userMessage.prepend(container);   
 
             largeMessage.textContent = "";
             let imageClone = imgElement.cloneNode();
@@ -241,7 +250,7 @@ pubnub.addListener({
             largeMessage.appendChild(largeMessageText);
             largeMessage.appendChild(imageClone);
 
-            userMessageContainer.prepend(container);             
+            userMessage.prepend(container);             
             receivedMessageSound.play();   
         }    
 });
@@ -255,4 +264,56 @@ function updateStatus(username, status){
             let imageUrl = "../client/images/" + status + ".png";
             statusIcon.style.backgroundImage = `url('${imageUrl}')`;
             statusDiv.textContent = status;    
+}
+
+let participantObj = document.querySelector('.participants');
+let containerObj = document.querySelector('.container');
+let userMessageContainer = document.querySelector('.user_message_container');
+
+function showParticipantDiv(e){
+    console.log("showing all participant div");
+    participantObj.style.display = "block";
+    containerObj.style.display = "none";
+
+    // largeMessageContainer.style.display = "none";
+    // userMessageContainer.style.display = "none";  
+    
+    participantObj.style.width = "100%";
+}
+
+function showMessageDiv(e){
+    console.log("showing message div");
+    containerObj.style.display = "flex";
+    userMessageContainer.style.display = "block";
+    userMessageContainer.style.width = "100%"
+    participantObj.style.display = "none";  
+    largeMessageContainer.style.display = "none"  
+}
+
+function showCurrentMessageDiv(e){
+    console.log("showing large message div");
+    containerObj.style.display = "flex";    
+    largeMessageContainer.style.display = "flex";
+    userMessageContainer.style.display = "none";
+    participantObj.style.display = "none";
+
+    containerObj.style.width = "100%"
+}
+
+function returnLargeScreenStyles(e){
+    if (event.matches){
+        console.log("in here");
+
+        participantObj.style.display = "block";  
+        userMessageContainer.style.display = "block";
+        largeMessageContainer.style.display = "flex" ;
+
+        participantObj.style.cssText = "";
+        userMessageContainer.style.cssText = "";
+        largeMessageContainer.style.cssText = "";
+
+        participantObj.className = "participants_large";
+        containerObj.className = "container_large";
+        userMessageContainer.className = "user_message_container_large";
+    }
 }
