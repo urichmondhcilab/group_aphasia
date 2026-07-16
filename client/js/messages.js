@@ -21,6 +21,8 @@ const sendBtn = document.getElementById("send");
 const clearBtn = document.getElementById("clear");
 const textAreaObj = document.getElementById("textarea");
 
+const feedBackObj = document.getElementById('feedback');
+
 console.log("the username is: " + username);
 
 // status buttons
@@ -129,6 +131,9 @@ function sendMessage(e, status){
     },
     function(status, response) {
         console.log(status);
+        if (status.statusCode == 200){
+            setAndClearFeedback();
+        }
         console.log(response);
     });    
 }
@@ -172,6 +177,14 @@ function readMessage(e){
 
     if (textAreaObj.value !='')
         synth.speak(utterThis);
+}
+
+
+function setAndClearFeedback(){
+    feedBackObj.style.display = "block";
+    setTimeout(()=>{
+        feedBackObj.style.display = "none"
+    }, 1000)
 }
 
 
