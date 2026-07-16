@@ -242,7 +242,7 @@ pubnub.addListener({
             largeMessage.appendChild(imageClone);
 
             userMessageContainer.prepend(container);             
-
+            receivedMessageSound.play();   
         }    
 });
 

@@ -131,7 +131,7 @@ async function uploadImage() {
 
     try {
         const result = await pubnub.sendFile({
-            channel: "my_channel",
+            channel: channel,
             file: myFile,
             message: {"text": message // Optional caption
             },
