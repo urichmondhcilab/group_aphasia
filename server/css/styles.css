@@ -7,7 +7,7 @@ body{
 }
 
 
-#user_message_container, .user_message_container, .user_and_session_container_large{
+#user_message_container, .user_message_container{
     box-sizing: border-box;
     width: 30%;
     padding-right: 1rem;
@@ -206,15 +206,14 @@ body{
         display: none;
     }
 
-    .menu{
+    .menu-sm{
         display: flex;
         justify-content: space-between;
         margin-top: auto;
         flex-grow: 1;
-
     }   
     
-    .menu-item{
+    .menu-item-sm{
         background-color: #8b9dc3;
         color: white;
         padding: 0.5rem;
@@ -223,17 +222,18 @@ body{
         flex-basis: 29%;     
     }
 
-    .participants{
-        /* width: 100%; */
-        display: none;
+    .participants-sm{
+        width: 100%;
+        display: block;
+        /* display: none; */
     }
 
-    .container{
+    /* .container{
         width: 100%;
-    }
+    } */
 
 }
-
+/* 
 @media (min-width: 781px){
    .participant{
         display: block;
@@ -252,6 +252,6 @@ body{
         display: flex;
         width: 70%;
    }
-}
+} */
 
 

@@ -274,46 +274,58 @@ function showParticipantDiv(e){
     console.log("showing all participant div");
     participantObj.style.display = "block";
     containerObj.style.display = "none";
-
-    // largeMessageContainer.style.display = "none";
-    // userMessageContainer.style.display = "none";  
+    userMessageContainer.style.display = "none";  
+    largeMessageContainer.style.display = "none";
     
     participantObj.style.width = "100%";
 }
 
 function showMessageDiv(e){
     console.log("showing message div");
+    participantObj.style.display = "none";  
     containerObj.style.display = "flex";
     userMessageContainer.style.display = "block";
-    userMessageContainer.style.width = "100%"
-    participantObj.style.display = "none";  
     largeMessageContainer.style.display = "none"  
+
+    containerObj.style.width = "100%"    
+    userMessageContainer.style.width = "100%";
 }
 
 function showCurrentMessageDiv(e){
     console.log("showing large message div");
-    containerObj.style.display = "flex";    
-    largeMessageContainer.style.display = "flex";
-    userMessageContainer.style.display = "none";
+    
     participantObj.style.display = "none";
+    containerObj.style.display = "flex";    
+    userMessageContainer.style.display = "none";
+    largeMessageContainer.style.display = "flex";
 
     containerObj.style.width = "100%"
+    largeMessageContainer.style.width = "100%";    
 }
 
 function returnLargeScreenStyles(e){
     if (event.matches){
         console.log("in here");
 
+        participantObj.style.cssText = "";
+        userMessageContainer.style.cssText = "";
+        largeMessageContainer.style.cssText = "";        
+
         participantObj.style.display = "block";  
+        containerObj.style.display = "flex";
         userMessageContainer.style.display = "block";
         largeMessageContainer.style.display = "flex" ;
 
-        participantObj.style.cssText = "";
-        userMessageContainer.style.cssText = "";
-        largeMessageContainer.style.cssText = "";
-
-        participantObj.className = "participants_large";
-        containerObj.className = "container_large";
-        userMessageContainer.className = "user_message_container_large";
+        participantObj.className = "participants";
+        containerObj.className = "container";
+        userMessageContainer.className = "user_message_container";
+        largeMessageContainer.className = "large_message_container";
+    }else{
+        participantObj.style.display = "block";
+        containerObj.style.display = "none";
+        userMessageContainer.style.display = "none";  
+        largeMessageContainer.style.display = "none";
+        
+        participantObj.style.width = "100%";        
     }
 }
