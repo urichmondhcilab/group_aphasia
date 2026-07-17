@@ -24,6 +24,9 @@ const mediaQuery = window.matchMedia('(min-width: 781px)');
 let menuItemParticipantObj = document.getElementById('menu-item-participant');
 let menuItemMessageObj = document.getElementById('menu-item-messages');
 let menuItemCurrentMessageObj = document.getElementById('menu-item-current-message');
+
+let backObj = document.getElementById('back');
+
 // keep a set of usernames
 let user = new Set();
 const colors = ['red', 'purple', 'blue', 'green', 'orange'];
@@ -54,6 +57,8 @@ menuItemMessageObj.addEventListener('click', showMessageDiv);
 menuItemCurrentMessageObj.addEventListener('click', showCurrentMessageDiv);
 
 mediaQuery.addEventListener('change', returnLargeScreenStyles);
+
+backObj.addEventListener('click', goBack);
 
 // add a subscription connection status listener
 pubnub.addListener({
@@ -278,6 +283,11 @@ function showParticipantDiv(e){
     largeMessageContainer.style.display = "none";
     
     participantObj.style.width = "100%";
+
+    menuItemParticipantObj.className = "menu-item-sm style-chosen-btn";
+    menuItemCurrentMessageObj.className = "menu-item-sm style-unchosen-btn";
+    menuItemMessageObj.className = "menu-item-sm style-unchosen-btn";
+
 }
 
 function showMessageDiv(e){
@@ -289,6 +299,11 @@ function showMessageDiv(e){
 
     containerObj.style.width = "100%"    
     userMessageContainer.style.width = "100%";
+
+    menuItemParticipantObj.className = "menu-item-sm style-unchosen-btn";
+    menuItemCurrentMessageObj.className = "menu-item-sm style-unchosen-btn";
+    menuItemMessageObj.className = "menu-item-sm style-chosen-btn";
+
 }
 
 function showCurrentMessageDiv(e){
@@ -300,7 +315,12 @@ function showCurrentMessageDiv(e){
     largeMessageContainer.style.display = "flex";
 
     containerObj.style.width = "100%"
-    largeMessageContainer.style.width = "100%";    
+    largeMessageContainer.style.width = "100%";  
+    
+    menuItemParticipantObj.className = "menu-item-sm style-unchosen-btn";
+    menuItemCurrentMessageObj.className = "menu-item-sm style-chosen-btn";
+    menuItemMessageObj.className = "menu-item-sm style-unchosen-btn";
+    
 }
 
 function returnLargeScreenStyles(e){
@@ -328,4 +348,8 @@ function returnLargeScreenStyles(e){
         
         participantObj.style.width = "100%";        
     }
+}
+
+function goBack(e){
+    window.location.href = "../client/facilitator.html";
 }

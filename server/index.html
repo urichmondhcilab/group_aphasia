@@ -7,51 +7,54 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="navigate-back-sm navigate-back-lg">Back</div>    
-    <div class="user_and_session_container">
-        <div class="participants participants-sm">
-            <div class="participant_title"> Participants</div>
-            <div id="all_participants_container" class="all_participants_container">
+    <div class="main_container">
+        <div class="navigate-back-sm navigate-back-lg" id="back">Back</div>    
+        <div class="user_and_session_container">
+            <div class="participants participants-sm">
+                <div class="participant_title"> Participants</div>
+                <div id="all_participants_container" class="all_participants_container">
 
+                </div>
             </div>
+
+            <div class="container">
+                <div id="session_name" class="session_name_sm session_name_lg">
+                    Session Name : July 2026
+                </div>
+                <div class="content">
+                    <div class="user_message_container" id="user_message_container">
+                        <div id="user_message_title">
+                            <!-- <div id="user_title">username</div> -->
+                            <div id="message_title">Messages</div>
+                        </div>  
+                        
+                        <div id="user_message">
+
+                        </div>             
+                    </div>
+
+                    <div id="large_message_container" class="large_message_container_sm large_message_container_lg">
+                        <div id="large_message"></div>
+                    </div>
+                </div>
+            </div>      
         </div>
-
-        <div class="container">
-            <div id="session_name">
-                Session Name : July 2026
+        <div class="menu menu-sm">
+            <div class="menu-item menu-item-sm" id="menu-item-participant"> 
+                <div class="icon" id="participant_icon"></div>
+                <div>Participants</div>
             </div>
-            <div class="content">
-                <div class="user_message_container" id="user_message_container">
-                    <div id="user_message_title">
-                        <!-- <div id="user_title">username</div> -->
-                        <div id="message_title">Messages</div>
-                    </div>  
-                    
-                    <div id="user_message">
-
-                    </div>             
-                </div>
-
-                <div id="large_message_container">
-                    <div id="large_message"></div>
-                </div>
+            <div class="menu-item menu-item-sm" id="menu-item-messages"> 
+                <div class="icon" id="message_icon"></div>
+                <div>Messages</div>            
             </div>
-        </div>      
+            <div class="menu-item menu-item-sm" id="menu-item-current-message">
+                <div class="icon" id="current_message_icon"></div>
+                <div>Current Messages</div>                        
+            </div>
+        </div>          
     </div>
-    <div class="menu menu-sm">
-        <div class="menu-item menu-item-sm" id="menu-item-participant"> 
-            <div class="icon" id="participant_icon"></div>
-            <div>Participants</div>
-        </div>
-        <div class="menu-item menu-item-sm" id="menu-item-messages"> 
-            <div class="icon" id="message_icon"></div>
-            <div>Messages</div>            
-        </div>
-        <div class="menu-item menu-item-sm" id="menu-item-current-message">
-            <div class="icon" id="current_message_icon"></div>
-            <div>Current Messages</div>                        
-        </div>
-    </div>      
+    
     <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.1.2.min.js"></script>
     <script src="../constants.js"></script>
     <script src="js/session.js"></script>
