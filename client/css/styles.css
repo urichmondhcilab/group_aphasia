@@ -54,13 +54,42 @@ body{
     width: 100%;
     background-color: #8b9dc3;
     color: white;
+
+    box-sizing: border-box;
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    border: 0.05rem solid #8b9dc3;
+    box-shadow: 
+      0 1px 1px rgba(0,0,0,0.1), 
+      0 2px 4px rgba(0,0,0,0.1), 
+      0 4px 8px rgba(0,0,0,0.1);     
+}
+
+#session{
+    box-sizing: border-box;    
+    background-color: #8b9dc3;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    border: 0.05rem solid #8b9dc3;
+    width: 100%;
+    box-shadow: 
+      0 1px 1px rgba(0,0,0,0.1), 
+      0 2px 4px rgba(0,0,0,0.1), 
+      0 4px 8px rgba(0,0,0,0.1);  
 }
 
 #template_message_container{
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    height: 85vh;
+    height: 70vh;
 }
 
 .role_options{
@@ -214,7 +243,7 @@ body{
     flex-grow: 0;
     /* background-color: #183040; */
     color: white;
-    height: 85vh;
+    height: 70vh;
     padding: 1rem 2rem 1rem 2rem;
     /* margin: 10rem; */
     /* padding-top: 3rem; */
@@ -287,18 +316,9 @@ body{
     box-sizing: border-box;
     display: flex;
     background-color: white;
-    /* justify-self: flex-end; */
-    /* position: relative; */
-
-    /* float: left;     */
-    /* bottom: 0px;
-    left: 0px;
-    right: 0px; */
     width: 100%;
-    /* padding: 1rem; */
-    /* border-radius: 0.5rem; */
     padding: 0px;
-    /* justify-self: end; */
+    gap: 0.1rem;
 }
 
 .lbl-attachment{
