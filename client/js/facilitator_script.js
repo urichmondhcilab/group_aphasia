@@ -1,6 +1,8 @@
 // constants
 const newMeeting = document.getElementById("new_meeting");
 const meetingInformation = document.getElementById('meeting_information');
+const manageMeetingObj = document.getElementById('manage_meeting');
+
 // retrieve information from login.js and client.html
 const params = new URLSearchParams(window.location.search);
 const username = params.get('user'); // get the user parameter.
@@ -10,6 +12,7 @@ let channelCount = 0;
 
 // event listeners
 newMeeting.addEventListener('click', createChannel);
+manageMeetingObj.addEventListener('click', manageMeeting);
 
 // initializing the publish and subscribe keys for PubNub
 let init_pubnub = {};
@@ -49,4 +52,9 @@ function createChannel(e){
 
 function updateMeetingInformation(channelID){
   meetingInformation.textContent = "New Meeting Created!: " + channelID;
+}
+
+
+function manageMeeting(e){
+  window.location.href = '../server/index.html';
 }
