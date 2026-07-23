@@ -213,6 +213,13 @@ body{
     display: none;
 }
 
+/* .connected-indicator{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: grey;    
+} */
+
 @media (max-width: 780px) {
     .container{
         display: none;
@@ -230,7 +237,7 @@ body{
         background-color: white;
         padding: 0.5rem;
         border-radius: 0.2rem;
-        font-size: 0.8rem;   
+        font-size: 0.7rem;   
         /* flex-basis: 29%;   */
         flex-grow: 1;
         display: flex;  
@@ -294,5 +301,7 @@ body{
         font-size: xx-large;
     }    
 }
+
+
 
 

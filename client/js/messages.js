@@ -21,6 +21,7 @@ const sendBtn = document.getElementById("send");
 const clearBtn = document.getElementById("clear");
 const textAreaObj = document.getElementById("textarea");
 
+const sessionName = document.getElementById('session');
 const feedBackObj = document.getElementById('feedback');
 
 console.log("the username is: " + username);
@@ -186,6 +187,12 @@ function setAndClearFeedback(){
         feedBackObj.style.display = "none"
     }, 1000)
 }
+
+
+// update session name if it exists
+(function (){
+    sessionName.textContent = "Session : " + channel;
+})();
 
 
 

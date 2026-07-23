@@ -18,6 +18,7 @@ let userMessage = document.getElementById('user_message');
 let largeMessageContainer = document.getElementById('large_message_container');
 let largeMessage = document.getElementById('large_message');
 let allParticipantContainer = document.getElementById('all_participants_container');
+let sessionTitle = document.getElementById('session_name');
 
 const mediaQuery = window.matchMedia('(min-width: 781px)');
 
@@ -88,7 +89,9 @@ pubnub.addListener({
             pubnub.subscribe({
                 channels: channel,
                 withPresence: true 
-            });            
+            });   
+            sessionTitle.textContent = "Session Name : " + meetingChannel;
+
         }else{
             // upload message to broadcast screen
 
@@ -339,7 +342,7 @@ function returnLargeScreenStyles(e){
         participantObj.className = "participants";
         containerObj.className = "container";
         userMessageContainer.className = "user_message_container";
-        largeMessageContainer.className = "large_message_container";
+        largeMessageContainer.className = "large_message_container large_message_container_lg";
     }else{
         participantObj.style.display = "block";
         containerObj.style.display = "none";
